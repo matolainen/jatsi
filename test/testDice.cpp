@@ -42,31 +42,36 @@ TEST_F(TestDice, giveLegalThrew_validationSuccess)
 
 TEST_F(TestDice, giveOnePair_returnTrue)
 {
-    u8 threw[5] = {1, 2, 3, 4, 1};
-    EXPECT_TRUE(dice.isPair(threw));
+    u8 cast[5] = {1, 2, 3, 4, 1};
+    dice.storeThrow(cast);
+    EXPECT_TRUE(dice.isPair());
 }
 
 TEST_F(TestDice, giveZeroPairs_returnFalse)
 {
-    u8 threw[5] = {1, 2, 3, 4, 5};
-    EXPECT_FALSE(dice.isPair(threw));
+    u8 cast[5] = {1, 2, 3, 4, 5};
+    dice.storeThrow(cast);
+    EXPECT_FALSE(dice.isPair());
 }
 
 TEST_F(TestDice, giveTwoPairs_returnTrue)
 {
-    u8 threw[5] = {1, 2, 2, 5, 5};
-    EXPECT_TRUE(dice.isPair(threw));
+    u8 cast[5] = {1, 2, 2, 5, 5};
+    dice.storeThrow(cast);
+    EXPECT_TRUE(dice.isPair());
 }
 
 TEST_F(TestDice, giveTwoPairs_returnTrueAgain)
 {
-    u8 threw[5] = {1, 2, 2, 5, 5};
-    EXPECT_TRUE(dice.isTwoPairs(threw));
+    u8 cast[5] = {1, 2, 1, 6, 6};
+    dice.storeThrow(cast);
+    EXPECT_TRUE(dice.isTwoPairs());
 }
 
 TEST_F(TestDice, giveThreeSames_returnTrue)
 {
-    u8 threw[5] = {1, 2, 2, 2, 5};
-    EXPECT_TRUE(dice.isTwoPairs(threw));
+    u8 cast[5] = {1, 2, 2, 2, 5};
+    dice.storeThrow(cast);
+    EXPECT_TRUE(dice.isThreeSame());
 }
 

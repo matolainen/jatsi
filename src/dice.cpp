@@ -28,37 +28,103 @@ bool Dice::isValid(const u8* dice)
     return true;
 }
 
-bool Dice::isPair(const u8* dice)
+void Dice::storeThrow(const u8* dice)
 {
+    init();
     for(u8 i = 0; i < NUM_OF_DICE; i++)
     {
-        for(u8 j = 0; j < NUM_OF_DICE; j++)
+        switch(dice[i])
         {
-            if((dice[i] == dice[j]) && (i != j))
-            {
-                return true;
-            }
+            case 1:
+                numOfNumbers[0]++;
+                break;
+            case 2:
+                numOfNumbers[1]++;
+                break;
+            case 3:
+                numOfNumbers[2]++;
+                break;
+            case 4:
+                numOfNumbers[3]++;
+                break;
+            case 5:
+                numOfNumbers[4]++;
+                break;
+            case 6:
+                numOfNumbers[5]++;
+                break;
+        }
+    }
+}
+
+bool Dice::isPairOrSame(u8 threshold)
+{
+    for(u8 i = 0; i < NUM_OF_NUMBERS; i++)
+    {
+        if(numOfNumbers[i] >= threshold)
+        {
+            return true;
         }
     }
 
     return false;
 }
 
-bool Dice::isTwoPairs(const u8* dice)
+bool Dice::isPair()
+{
+   if(isPairOrSame(2))
+   {
+      return true; 
+   }
+   
+   return false;
+} 
+
+bool Dice::isTwoPairs()
 {
     u8 numOfPairs = 0;
-    
-    for(u8 i = 0; i < NUM_OF_DICE; i++)
+
+    for(u8 i = 0; i < NUM_OF_NUMBERS; i++)
     {
-        for(u8 j = i + 1; j < NUM_OF_DICE; j++)
-        {
-            if((dice[i] == dice[j]) && (i != j))
-            {
-                numOfPairs++;
-            }
-        }
+       if(numOfNumbers[i] > 1)
+       {
+          numOfPairs++;
+       } 
     }
 
     return (numOfPairs == 2);
+}
+
+bool Dice::isThreeSame()
+{
+   if(isPairOrSame(3))
+   {
+      return true; 
+   }
+   
+   return false;
+
+}
+
+bool Dice::isFourSame()
+{
+   if(isPairOrSame(4))
+   {
+      return true; 
+   }
+   
+   return false;
+
+}
+
+bool Dice::isYatzy()
+{
+   if(isPairOrSame(5))
+   {
+      return true; 
+   }
+   
+   return false;
+
 }
 
