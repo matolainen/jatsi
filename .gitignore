@@ -1,3 +1,4 @@
-*.o
-testAll
+test/*.o
+test/testAll
+src/*.o
 
