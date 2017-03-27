@@ -128,3 +128,27 @@ bool Dice::isYatzy()
 
 }
 
+bool Dice::isFullHouse()
+{
+    if(isThreeSame() && isPair())
+    {
+        return true;
+    }
+
+    return false;
+}
+
+bool Dice::isSmallStraight()
+{
+    if(!isPair() && getBiggest() < 6)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+u8 Dice::getBiggest()
+{
+    return 0;
+}

@@ -45,6 +45,10 @@ TEST_F(TestDice, giveOnePair_returnTrue)
     u8 cast[5] = {1, 2, 3, 4, 1};
     dice.storeThrow(cast);
     EXPECT_TRUE(dice.isPair());
+    EXPECT_FALSE(dice.isTwoPairs());
+    EXPECT_FALSE(dice.isThreeSame());
+    EXPECT_FALSE(dice.isFourSame());
+    EXPECT_FALSE(dice.isYatzy());
 }
 
 TEST_F(TestDice, giveZeroPairs_returnFalse)
@@ -75,3 +79,37 @@ TEST_F(TestDice, giveThreeSames_returnTrue)
     EXPECT_TRUE(dice.isThreeSame());
 }
 
+TEST_F(TestDice, giveFourSames_returnTrue)
+{
+    u8 cast[5] = {1, 6, 6, 6, 6};
+    dice.storeThrow(cast);
+    EXPECT_TRUE(dice.isFourSame());
+}
+
+TEST_F(TestDice, giveYatzy_returnTrue)
+{
+    u8 cast[5] = {1, 1, 1, 1, 1};
+    dice.storeThrow(cast);
+    EXPECT_TRUE(dice.isYatzy());
+}
+
+TEST_F(TestDice, giveFullHouse_returnTrue)
+{
+    u8 cast[5] = {6, 1, 1, 6, 1};
+    dice.storeThrow(cast);
+    EXPECT_TRUE(dice.isTwoPairs());
+    EXPECT_TRUE(dice.isPair());
+    EXPECT_TRUE(dice.isThreeSame());
+    EXPECT_TRUE(dice.isFullHouse());
+    EXPECT_FALSE(dice.isFourSame());
+    EXPECT_FALSE(dice.isYatzy());
+}
+
+TEST_F(TestDice, giveSmallStraight_returnTrue)
+{
+    u8 cast[5] = {5, 3, 1, 2, 4};
+    dice.storeThrow(cast);
+    EXPECT_FALSE(dice.isTwoPairs());
+    EXPECT_FALSE(dice.isPair());
+    EXPECT_TRUE(dice.isSmallStraight());
+}
