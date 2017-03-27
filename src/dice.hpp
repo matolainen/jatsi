@@ -9,6 +9,7 @@
 #define u8   unsigned char
 #define u32  unsigned int
 #define i8   signed char
+#define INVALID_VALUE 0xFF
 
 
 class Dice
@@ -31,16 +32,14 @@ public:
 
     u8 getNumOfSames(const u8* dice, u8 target);
     bool isPairOrSame(u8 threshold);
-    void storeThrow(const u8* dice);
-    u8 getBiggest();
+    void storeThrow(const u8* dice); 
 
 private: 
     u8 numOfNumbers[NUM_OF_NUMBERS];
-    u8 biggest; 
+    u8 getBiggest();
 
     void init()
     {
-        biggest = 0;
         memset((void*)numOfNumbers, 0, sizeof(numOfNumbers));
     }
 };

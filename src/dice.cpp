@@ -140,7 +140,7 @@ bool Dice::isFullHouse()
 
 bool Dice::isSmallStraight()
 {
-    if(!isPair() && getBiggest() < 6)
+    if(!isPair() && getBiggest() == 5)
     {
         return true;
     }
@@ -150,5 +150,24 @@ bool Dice::isSmallStraight()
 
 u8 Dice::getBiggest()
 {
-    return 0;
+    for(u8 i = 5; i > 0; i--)
+    {
+        if(numOfNumbers[i] > 0)
+        {
+            return (i + 1);
+        }
+    }
+
+    return INVALID_VALUE;
 }
+
+bool Dice::isBigStraight()
+{
+    if(!isPair() && getBiggest() == 6)
+    {
+        return true;
+    }
+
+    return false;
+}
+

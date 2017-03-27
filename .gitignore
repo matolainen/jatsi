@@ -1,4 +1,6 @@
 test/*.o
 test/testAll
+test/*.swp
 src/*.o
+src/*.swp
 
