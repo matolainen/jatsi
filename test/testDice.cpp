@@ -49,7 +49,7 @@ TEST_F(TestDice, giveOnePair_returnTrue)
 TEST_F(TestDice, giveZeroPairs_returnFalse)
 {
     u8 threw[5] = {1, 2, 3, 4, 5};
-    EXPECT_TRUE(dice.isPair(threw));
+    EXPECT_FALSE(dice.isPair(threw));
 }
 
 TEST_F(TestDice, giveTwoPairs_returnTrue)

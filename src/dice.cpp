@@ -34,7 +34,7 @@ bool Dice::isPair(const u8* dice)
     {
         for(u8 j = 0; j < NUM_OF_DICE; j++)
         {
-            if(dice[i] == dice[j])
+            if((dice[i] == dice[j]) && (i != j))
             {
                 return true;
             }
@@ -50,7 +50,7 @@ bool Dice::isTwoPairs(const u8* dice)
     
     for(u8 i = 0; i < NUM_OF_DICE; i++)
     {
-        for(u8 j = 0; j < NUM_OF_DICE; j++)
+        for(u8 j = i + 1; j < NUM_OF_DICE; j++)
         {
             if((dice[i] == dice[j]) && (i != j))
             {
@@ -61,3 +61,4 @@ bool Dice::isTwoPairs(const u8* dice)
 
     return (numOfPairs == 2);
 }
+
