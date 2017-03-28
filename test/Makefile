@@ -2,7 +2,7 @@ CXX = g++
 CXXFLAGS = -g -L/usr/src/gtest  -Wall
 CXXLIBFLAGS = -lgtest -lpthread
 INCS = -I/usr/include
-OBJS = ../src/dice.o testDice.o
+OBJS = ../src/dice.o testDice.o ../src/points.o testPoints.o
 
 testAll: $(OBJS)
 		$(CXX) $(CXXFLAGS) $(INCS) -o testAll  jatsiTestAll.cpp $(OBJS) $(CXXLIBFLAGS)
