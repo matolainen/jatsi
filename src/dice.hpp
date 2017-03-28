@@ -21,17 +21,18 @@ public:
     }
 
     bool isValid(const u8* dice);
-    bool isPair();
-    bool isTwoPairs();
-    bool isThreeSame();
-    bool isFourSame();
-    bool isSmallStraight();
-    bool isBigStraight();
-    bool isFullHouse();
-    bool isYatzy();
+    u8 isPair();
+    u8 isTwoPairs();
+    u8 isThreeSame();
+    u8 isFourSame();
+    u8 isSmallStraight();
+    u8 isBigStraight();
+    u8 isFullHouse();
+    u8 isYatzy();
 
     u8 getNumOfSames(u8 target);
-    bool isPairOrSame(u8 threshold);
+    u8 getSumOfSames(u8 target);
+    u8 isPairOrSame(u8 threshold);
     void storeThrow(const u8* dice); 
     u8 numOfNumbers[NUM_OF_NUMBERS];
 

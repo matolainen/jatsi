@@ -47,95 +47,79 @@ void Dice::storeThrow(const u8* dice)
     }
 }
 
-bool Dice::isPairOrSame(u8 threshold)
+u8 Dice::isPairOrSame(u8 threshold)
 {
+    u8 sum = 0;
+
     for(u8 i = 0; i < NUM_OF_NUMBERS; i++)
     {
         if(numOfNumbers[i] >= threshold)
         {
-            return true;
+            sum = ((i + 1) * threshold);
         }
     }
 
-    return false;
+    return sum;
 }
 
-bool Dice::isPair()
+u8 Dice::isPair()
 {
-   if(isPairOrSame(2))
-   {
-      return true; 
-   }
-   
-   return false;
+    return isPairOrSame(2);
 } 
 
-bool Dice::isTwoPairs()
+u8 Dice::isTwoPairs()
 {
     u8 numOfPairs = 0;
+    u8 sum = 0;
 
     for(u8 i = 0; i < NUM_OF_NUMBERS; i++)
     {
-       if(numOfNumbers[i] > 1)
-       {
-          numOfPairs++;
-       } 
+        if(numOfNumbers[i] > 1)
+        {
+            sum += ((i + 1) * 2);
+            numOfPairs++;
+        } 
     }
 
-    return (numOfPairs == 2);
+    return (numOfPairs == 2 ? sum : 0);
 }
 
-bool Dice::isThreeSame()
+u8 Dice::isThreeSame()
 {
-   if(isPairOrSame(3))
-   {
-      return true; 
-   }
-   
-   return false;
-
+    return isPairOrSame(3);
 }
 
-bool Dice::isFourSame()
+u8 Dice::isFourSame()
 {
-   if(isPairOrSame(4))
-   {
-      return true; 
-   }
-   
-   return false;
-
+    return isPairOrSame(4);
 }
 
-bool Dice::isYatzy()
+u8 Dice::isYatzy()
 {
-   if(isPairOrSame(5))
-   {
-      return true; 
-   }
-   
-   return false;
-
+    return (isPairOrSame(5) ? 50 : 0);
 }
 
-bool Dice::isFullHouse()
+u8 Dice::isFullHouse()
 {
-    if(isThreeSame() && isPair())
+    u8 threeSame = isThreeSame();
+    u8 pair = isPair();
+
+    if((threeSame > 0) && (pair > 0))
     {
-        return true;
+        return (threeSame + pair); 
     }
 
-    return false;
+    return 0;
 }
 
-bool Dice::isSmallStraight()
+u8 Dice::isSmallStraight()
 {
-    if(!isPair() && getBiggest() == 5)
+    if((isPair() == 0) && (getBiggest() == 5))
     {
-        return true;
+        return 15;
     }
 
-    return false;
+    return 0;
 }
 
 u8 Dice::getBiggest()
@@ -151,13 +135,18 @@ u8 Dice::getBiggest()
     return INVALID_VALUE;
 }
 
-bool Dice::isBigStraight()
+u8 Dice::isBigStraight()
 {
-    if(!isPair() && getBiggest() == 6)
+    if((isPair() == 0) && (getBiggest() == 6))
     {
-        return true;
+        return 20;
     }
 
-    return false;
+    return 0;
+}
+
+u8 Dice::getSumOfSames(u8 target)
+{
+    return (target * getNumOfSames(target)); 
 }
 
