@@ -12,6 +12,7 @@ public:
     }
 
     u8 getSumOfNumbers();
+    u8 getSumOfSameOnes(u8 target);
 
 private:
 

@@ -30,7 +30,7 @@ public:
     bool isFullHouse();
     bool isYatzy();
 
-    u8 getNumOfSames(const u8* dice, u8 target);
+    u8 getNumOfSames(u8 target);
     bool isPairOrSame(u8 threshold);
     void storeThrow(const u8* dice); 
     u8 numOfNumbers[NUM_OF_NUMBERS];

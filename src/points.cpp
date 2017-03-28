@@ -13,5 +13,13 @@ u8 Points::getSumOfNumbers()
     return sumOfNumbers;
 }
 
+u8 Points::getSumOfSameOnes(u8 target)
+{
+    u8 sumOfSameOnes = 0;
+    sumOfSameOnes = (target * getNumOfSames(target)); 
+
+    return sumOfSameOnes;
+}
+
 
 

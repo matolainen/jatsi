@@ -12,14 +12,16 @@ class TestDice : public::testing::Test
 
 TEST_F(TestDice, giveTwoOnes_getTwoOnes)
 {
-    u8 threw[5] = {1, 1, 3, 4, 5};
-    EXPECT_EQ(2, dice.getNumOfSames(threw, 1));
+    u8 cast[5] = {1, 1, 3, 4, 5};
+    dice.storeThrow(cast);
+    EXPECT_EQ(2, dice.getNumOfSames(1));
 }
     
 TEST_F(TestDice, giveZeroOne_getZeroOne)
 {
-    u8 threw[5] = {5, 2, 3, 4, 5};
-    EXPECT_EQ(0, dice.getNumOfSames(threw, 1));
+    u8 cast[5] = {5, 2, 3, 4, 5};
+    dice.storeThrow(cast);
+    EXPECT_EQ(0, dice.getNumOfSames(1));
 }
 
 TEST_F(TestDice, giveUnderValues_validationFailed)

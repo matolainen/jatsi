@@ -1,18 +1,8 @@
 #include "dice.hpp"
 
-u8 Dice::getNumOfSames(const u8* dice, u8 target)
+u8 Dice::getNumOfSames(u8 target)
 {
-    u8 numOfTarget = 0;
-    
-    for(u8 i = 0; i < NUM_OF_DICE; i++)
-    {
-       if(target == dice[i])
-       {
-          numOfTarget++;
-       }
-    }
-
-    return numOfTarget;
+    return numOfNumbers[target - 1];
 }
 
 bool Dice::isValid(const u8* dice)
