@@ -130,3 +130,4 @@ TEST_F(TestDice, giveBigStraight_returnTrue)
     EXPECT_EQ(20, dice.isBigStraight());
 }
 
+

@@ -21,5 +21,24 @@ u8 Points::getSumOfSameOnes(u8 target)
     return sumOfSameOnes;
 }
 
+SPointsArray Points::getPoints()
+{
+    pointsTable.ones          = getSumOfSames(1);
+    pointsTable.twos          = getSumOfSames(2);
+    pointsTable.threes        = getSumOfSames(3);
+    pointsTable.fours         = getSumOfSames(4);
+    pointsTable.fives         = getSumOfSames(5);
+    pointsTable.sixes         = getSumOfSames(6);
+    pointsTable.pair          = isPair();
+    pointsTable.twoPairs      = isTwoPairs();
+    pointsTable.threeSame     = isThreeSame();
+    pointsTable.fourSame      = isFourSame();
+    pointsTable.smallStraight = isSmallStraight();
+    pointsTable.bigStraight   = isBigStraight();
+    pointsTable.fullHouse     = isFullHouse();
+    pointsTable.random        = getSumOfNumbers();
+    pointsTable.yatzy         = isYatzy();
 
+    return pointsTable;
+}
 

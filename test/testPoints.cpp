@@ -25,3 +25,10 @@ TEST_F(TestPoints, giveThreeSame_getCorrectPoints)
     EXPECT_EQ(0, points.getSumOfSameOnes(2));
     EXPECT_EQ(12, points.getSumOfSameOnes(6));
 }
+
+TEST_F(TestPoints, giveCast_getCorrectPointsArray)
+{
+    u8 cast[5] = {5, 5, 1, 3, 6};
+    points.storeThrow(cast);
+    EXPECT_EQ(1, points.getPoints().ones);
+}
