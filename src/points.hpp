@@ -33,13 +33,14 @@ public:
         init();
     }
 
-    SPoints getPoints();
-    void setPoints(EPointsCategory category);
+    const SPoints* getPoints();
+    void setPoints(const EPointsCategory category);
 
 private:
-    u8 getSumOfNumbers();
-    u8 getSumOfSameOnes(u8 target);
+    const u8 getSumOfNumbers();
+    const u8 getSumOfSameOnes(const u8 target);
     SPoints pointsTable;
+    
     void init()
     {
         memset(&pointsTable, 0, sizeof(SPoints));

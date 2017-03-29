@@ -1,7 +1,7 @@
 #include "points.hpp"
 #include "dice.hpp"
 
-u8 Points::getSumOfNumbers()
+const u8 Points::getSumOfNumbers()
 {
     u8 sumOfNumbers = 0;
 
@@ -13,7 +13,7 @@ u8 Points::getSumOfNumbers()
     return sumOfNumbers;
 }
 
-u8 Points::getSumOfSameOnes(u8 target)
+const u8 Points::getSumOfSameOnes(const u8 target)
 {
     u8 sumOfSameOnes = 0;
     sumOfSameOnes = (target * getNumOfSames(target)); 
@@ -21,7 +21,7 @@ u8 Points::getSumOfSameOnes(u8 target)
     return sumOfSameOnes;
 }
 
-void Points::setPoints(EPointsCategory category)
+void Points::setPoints(const EPointsCategory category)
 {
     switch(category)
     {
@@ -133,7 +133,7 @@ void Points::setPoints(EPointsCategory category)
     }
 }
 
-SPoints Points::getPoints()
+const SPoints* Points::getPoints()
 {
-    return pointsTable;
+    return &pointsTable;
 }
