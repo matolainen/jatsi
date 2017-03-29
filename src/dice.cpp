@@ -2,7 +2,11 @@
 
 u8 Dice::getNumOfSames(u8 target)
 {
-    return numOfNumbers[target - 1];
+    if(target > 0)
+    {
+        return numOfNumbers[target - 1];
+    }
+    return INVALID_VALUE;
 }
 
 bool Dice::isValid(const u8* dice)
