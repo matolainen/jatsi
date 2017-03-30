@@ -4,6 +4,8 @@
 #include <string.h>
 #include "dice.hpp"
 
+#define BONUS_THRESHOLD 63
+
 struct SPoints
 {
     u8 ones, twos, threes, fours, fives, sixes;
@@ -14,7 +16,7 @@ struct SPoints
     u8 fullHouse;
     u8 random;
     u8 yatzy;
-    u8 total;
+    u32 total;
 };
 
 enum EPointsCategory
@@ -33,18 +35,18 @@ public:
         init();
     }
 
+    void init()
+    {
+        bonusTrigger = 0;
+        memset(&pointsTable, 0, sizeof(SPoints));
+    }
     const SPoints* getPoints();
     void setPoints(const EPointsCategory category);
 
 private:
     const u8 getSumOfNumbers();
-    const u8 getSumOfSameOnes(const u8 target);
     SPoints pointsTable;
-    
-    void init()
-    {
-        memset(&pointsTable, 0, sizeof(SPoints));
-    }
+    u8 bonusTrigger;  
 };
 
 #endif

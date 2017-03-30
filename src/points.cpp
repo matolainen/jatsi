@@ -13,16 +13,8 @@ const u8 Points::getSumOfNumbers()
     return sumOfNumbers;
 }
 
-const u8 Points::getSumOfSameOnes(const u8 target)
-{
-    u8 sumOfSameOnes = 0;
-    sumOfSameOnes = (target * getNumOfSames(target)); 
-
-    return sumOfSameOnes;
-}
-
 void Points::setPoints(const EPointsCategory category)
-{
+{ 
     switch(category)
     {
         case EOnes:
@@ -30,6 +22,7 @@ void Points::setPoints(const EPointsCategory category)
             {
                 pointsTable.ones = getSumOfSames(1);
                 pointsTable.total += pointsTable.ones;
+                bonusTrigger += pointsTable.ones;
             }
             break;
         case ETwos:
@@ -37,6 +30,7 @@ void Points::setPoints(const EPointsCategory category)
             {
                 pointsTable.twos = getSumOfSames(2);
                 pointsTable.total += pointsTable.twos;
+                bonusTrigger += pointsTable.twos;
             }
             break;
         case EThrees:
@@ -44,6 +38,7 @@ void Points::setPoints(const EPointsCategory category)
             { 
                 pointsTable.threes = getSumOfSames(3);
                 pointsTable.total += pointsTable.threes;
+                bonusTrigger += pointsTable.threes;
             }
             break;
         case EFours:
@@ -51,6 +46,7 @@ void Points::setPoints(const EPointsCategory category)
             {
                 pointsTable.fours = getSumOfSames(4);
                 pointsTable.total += pointsTable.fours;
+                bonusTrigger += pointsTable.fours;
             }
             break;
         case EFives:
@@ -58,6 +54,7 @@ void Points::setPoints(const EPointsCategory category)
             {
                 pointsTable.fives = getSumOfSames(5);
                 pointsTable.total += pointsTable.fives;
+                bonusTrigger += pointsTable.fives;
             }
             break;
         case ESixes:
@@ -65,6 +62,7 @@ void Points::setPoints(const EPointsCategory category)
             {
                 pointsTable.sixes = getSumOfSames(6);
                 pointsTable.total += pointsTable.sixes;
+                bonusTrigger += pointsTable.sixes;
             }
             break;
         case EPair:
@@ -130,6 +128,11 @@ void Points::setPoints(const EPointsCategory category)
                 pointsTable.total += pointsTable.yatzy;
             }
             break;
+    }
+
+    if(bonusTrigger >= BONUS_THRESHOLD)
+    {
+        pointsTable.bonus = 50;
     }
 }
 
