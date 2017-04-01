@@ -1,7 +1,8 @@
 #include "points.hpp"
-#include <string.h>
+#include <string>
 
 #define MAX_LENGTH_OF_NAME 16
+#define DEFAULT_NAME "JatsiMies"
 
 
 class Player
@@ -14,19 +15,19 @@ public:
 
     void init()
     {
-        memset((void*)name, '\0', sizeof(name));
-        strncpy(name, "NoppaTollo", strlen("NoppaTollo"));
+        name.resize(MAX_LENGTH_OF_NAME);
+        name = DEFAULT_NAME;
         points.init();
     }
 
-    void setName(const char newName[]);
-    const char* getName();
+    void setName(const std::string newName);
+    const std::string getName();
     const SPoints* getPoints();
     void setPoints(const EPointsCategory category);
     void storeCast(const u8* dice);
 
 private:
-    char name[MAX_LENGTH_OF_NAME];
+    std::string name;
     Points points;
 };
 

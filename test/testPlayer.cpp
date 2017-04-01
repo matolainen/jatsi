@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 #include "../src/player.hpp"
 
+
 class TestPlayer : public::testing::Test
 {
     protected:
@@ -43,15 +44,15 @@ TEST_F(TestPlayer, giveManyCasts_totalPointsAreUpdated)
 
 TEST_F(TestPlayer, giveName_nameIsUpdated)
 { 
-    EXPECT_STREQ("NoppaTollo", player.getName());
+    EXPECT_EQ(DEFAULT_NAME, player.getName());
     player.setName("SuperMies");
-    EXPECT_STREQ("SuperMies", player.getName());
+    EXPECT_EQ("SuperMies", player.getName());
 }
 
 TEST_F(TestPlayer, giveTooLongName_nameIsNotUpdated)
 { 
-    EXPECT_STREQ("NoppaTollo", player.getName());
+    EXPECT_EQ(DEFAULT_NAME, player.getName());
     player.setName("SuperMiesNainenTransIhminen");
-    EXPECT_STREQ("NoppaTollo", player.getName());
+    EXPECT_EQ(DEFAULT_NAME, player.getName());
 }
 

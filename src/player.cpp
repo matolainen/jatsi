@@ -1,15 +1,15 @@
 #include "player.hpp"
+#include <string>
 
-void Player::setName(const char newName[])
+void Player::setName(const std::string newName)
 {
-    if(strlen(newName) <= MAX_LENGTH_OF_NAME)
+    if(newName.size() <= MAX_LENGTH_OF_NAME)
     {
-        memset((void*)name, '\0', sizeof(name));
-        strncpy(name, newName, strlen(newName));
+        name = newName;
     }
 }
     
-const char* Player::getName()
+const std::string Player::getName()
 {
     return name;
 }
