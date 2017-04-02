@@ -130,4 +130,15 @@ TEST_F(TestDice, giveBigStraight_returnTrue)
     EXPECT_EQ(20, dice.isBigStraight());
 }
 
+TEST_F(TestDice, rollDie_getValidCast)
+{
+    EXPECT_TRUE(dice.isValid(dice.rollDie(5)));
+}
+
+
+
+
+
+
+
 

@@ -23,7 +23,7 @@ public:
     void setName(const std::string newName);
     const std::string getName();
     const SPoints* getPoints();
-    void setPoints(const EPointsCategory category);
+    const bool setPoints(const EPointsCategory category);
     void storeCast(const u8* dice);
 
 private:

@@ -13,8 +13,10 @@ const u8 Points::getSumOfNumbers()
     return sumOfNumbers;
 }
 
-void Points::setPoints(const EPointsCategory category)
+const bool Points::setPoints(const EPointsCategory category)
 { 
+    bool pointsSet = false;
+
     switch(category)
     {
         case EOnes:
@@ -23,6 +25,7 @@ void Points::setPoints(const EPointsCategory category)
                 pointsTable.ones = getSumOfSames(1);
                 pointsTable.total += pointsTable.ones;
                 bonusTrigger += pointsTable.ones;
+                pointsSet = true;
             }
             break;
         case ETwos:
@@ -31,6 +34,7 @@ void Points::setPoints(const EPointsCategory category)
                 pointsTable.twos = getSumOfSames(2);
                 pointsTable.total += pointsTable.twos;
                 bonusTrigger += pointsTable.twos;
+                pointsSet = true;
             }
             break;
         case EThrees:
@@ -39,6 +43,7 @@ void Points::setPoints(const EPointsCategory category)
                 pointsTable.threes = getSumOfSames(3);
                 pointsTable.total += pointsTable.threes;
                 bonusTrigger += pointsTable.threes;
+                pointsSet = true;
             }
             break;
         case EFours:
@@ -47,6 +52,7 @@ void Points::setPoints(const EPointsCategory category)
                 pointsTable.fours = getSumOfSames(4);
                 pointsTable.total += pointsTable.fours;
                 bonusTrigger += pointsTable.fours;
+                pointsSet = true;
             }
             break;
         case EFives:
@@ -55,6 +61,7 @@ void Points::setPoints(const EPointsCategory category)
                 pointsTable.fives = getSumOfSames(5);
                 pointsTable.total += pointsTable.fives;
                 bonusTrigger += pointsTable.fives;
+                pointsSet = true;
             }
             break;
         case ESixes:
@@ -63,6 +70,7 @@ void Points::setPoints(const EPointsCategory category)
                 pointsTable.sixes = getSumOfSames(6);
                 pointsTable.total += pointsTable.sixes;
                 bonusTrigger += pointsTable.sixes;
+                pointsSet = true;
             }
             break;
         case EPair:
@@ -70,6 +78,7 @@ void Points::setPoints(const EPointsCategory category)
             {
                 pointsTable.pair = isPair();
                 pointsTable.total += pointsTable.pair;
+                pointsSet = true;
             }
             break;
         case ETwoPairs:
@@ -77,6 +86,7 @@ void Points::setPoints(const EPointsCategory category)
             {
                 pointsTable.twoPairs = isTwoPairs();
                 pointsTable.total += pointsTable.twoPairs;
+                pointsSet = true;
             }
             break;
         case EThreeSame:
@@ -84,6 +94,7 @@ void Points::setPoints(const EPointsCategory category)
             {
                 pointsTable.threeSame = isThreeSame();
                 pointsTable.total += pointsTable.threeSame;
+                pointsSet = true;
             }
             break;
         case EFourSame:
@@ -91,6 +102,7 @@ void Points::setPoints(const EPointsCategory category)
             {
                 pointsTable.fourSame = isFourSame();
                 pointsTable.total += pointsTable.fourSame;
+                pointsSet = true;
             }
             break;
         case ESmallStraight:
@@ -98,6 +110,7 @@ void Points::setPoints(const EPointsCategory category)
             {
                 pointsTable.smallStraight = isSmallStraight();
                 pointsTable.total += pointsTable.smallStraight;
+                pointsSet = true;
             }
             break;
         case EBigStraight:
@@ -105,6 +118,7 @@ void Points::setPoints(const EPointsCategory category)
             {
                 pointsTable.bigStraight = isBigStraight();
                 pointsTable.total += pointsTable.bigStraight;
+                pointsSet = true;
             }
             break;
         case EFullHouse:
@@ -112,6 +126,7 @@ void Points::setPoints(const EPointsCategory category)
             {
                 pointsTable.fullHouse = isFullHouse();
                 pointsTable.total += pointsTable.fullHouse;
+                pointsSet = true;
             }
             break;
         case ERandom:
@@ -119,6 +134,7 @@ void Points::setPoints(const EPointsCategory category)
             {
                 pointsTable.random = getSumOfNumbers();
                 pointsTable.total += pointsTable.random;
+                pointsSet = true;
             }
             break;
         case EYatzy:
@@ -126,6 +142,7 @@ void Points::setPoints(const EPointsCategory category)
             {
                 pointsTable.yatzy = isYatzy();
                 pointsTable.total += pointsTable.yatzy;
+                pointsSet = true;
             }
             break;
     }
@@ -134,6 +151,8 @@ void Points::setPoints(const EPointsCategory category)
     {
         pointsTable.bonus = 50;
     }
+
+    return pointsSet;
 }
 
 const SPoints* Points::getPoints()

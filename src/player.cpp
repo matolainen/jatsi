@@ -19,9 +19,9 @@ const SPoints* Player::getPoints()
     return points.getPoints();
 }
 
-void Player::setPoints(const EPointsCategory category)
+const bool Player::setPoints(const EPointsCategory category)
 {
-    points.setPoints(category);
+    return (points.setPoints(category));
 }
 
 void Player::storeCast(const u8* dice)

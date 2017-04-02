@@ -1,6 +1,7 @@
 #include "dice.hpp"
+#include <random>
 
-u8 Dice::getNumOfSames(u8 target)
+const u8 Dice::getNumOfSames(const u8 target)
 {
     if(target > 0)
     {
@@ -9,7 +10,7 @@ u8 Dice::getNumOfSames(u8 target)
     return INVALID_VALUE;
 }
 
-bool Dice::isValid(const u8* dice)
+const bool Dice::isValid(const u8* dice)
 {
     for(u8 i = 0; i < NUM_OF_DICE; i++)
     {
@@ -25,33 +26,17 @@ bool Dice::isValid(const u8* dice)
 void Dice::storeThrow(const u8* dice)
 {
     init();
+
     for(u8 i = 0; i < NUM_OF_DICE; i++)
     {
-        switch(dice[i])
+        if(dice[i] >= 1 && dice[i] <= 6)
         {
-            case 1:
-                numOfNumbers[0]++;
-                break;
-            case 2:
-                numOfNumbers[1]++;
-                break;
-            case 3:
-                numOfNumbers[2]++;
-                break;
-            case 4:
-                numOfNumbers[3]++;
-                break;
-            case 5:
-                numOfNumbers[4]++;
-                break;
-            case 6:
-                numOfNumbers[5]++;
-                break;
+            numOfNumbers[(dice[i] - 1)]++;
         }
     }
 }
 
-u8 Dice::isPairOrSame(u8 threshold)
+const u8 Dice::isPairOrSame(const u8 threshold)
 {
     u8 sum = 0;
 
@@ -66,12 +51,12 @@ u8 Dice::isPairOrSame(u8 threshold)
     return sum;
 }
 
-u8 Dice::isPair()
+const u8 Dice::isPair()
 {
     return isPairOrSame(2);
 } 
 
-u8 Dice::isTwoPairs()
+const u8 Dice::isTwoPairs()
 {
     u8 numOfPairs = 0;
     u8 sum = 0;
@@ -88,22 +73,22 @@ u8 Dice::isTwoPairs()
     return (numOfPairs == 2 ? sum : 0);
 }
 
-u8 Dice::isThreeSame()
+const u8 Dice::isThreeSame()
 {
     return isPairOrSame(3);
 }
 
-u8 Dice::isFourSame()
+const u8 Dice::isFourSame()
 {
     return isPairOrSame(4);
 }
 
-u8 Dice::isYatzy()
+const u8 Dice::isYatzy()
 {
     return (isPairOrSame(5) ? 50 : 0);
 }
 
-u8 Dice::isFullHouse()
+const u8 Dice::isFullHouse()
 {
     u8 threeSame = isThreeSame();
     u8 pair = isPair();
@@ -116,7 +101,7 @@ u8 Dice::isFullHouse()
     return 0;
 }
 
-u8 Dice::isSmallStraight()
+const u8 Dice::isSmallStraight()
 {
     if((isPair() == 0) && (getBiggest() == 5))
     {
@@ -126,7 +111,7 @@ u8 Dice::isSmallStraight()
     return 0;
 }
 
-u8 Dice::getBiggest()
+const u8 Dice::getBiggest()
 {
     for(u8 i = 5; i > 0; i--)
     {
@@ -139,7 +124,7 @@ u8 Dice::getBiggest()
     return INVALID_VALUE;
 }
 
-u8 Dice::isBigStraight()
+const u8 Dice::isBigStraight()
 {
     if((isPair() == 0) && (getBiggest() == 6))
     {
@@ -149,8 +134,20 @@ u8 Dice::isBigStraight()
     return 0;
 }
 
-u8 Dice::getSumOfSames(u8 target)
+const u8 Dice::getSumOfSames(u8 target)
 {
     return (target * getNumOfSames(target)); 
+}
+
+const u8* Dice::rollDie(const u8 numOfDice)
+{
+    for(u8 i = 0; i < numOfDice; i++)
+    {
+        std::default_random_engine generator;
+        std::uniform_int_distribution<int> distribution(1,6);
+        cast[i] = distribution(generator); 
+    }
+
+    return cast;
 }
 

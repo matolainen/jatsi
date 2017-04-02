@@ -17,30 +17,32 @@ class Dice
 public:
     Dice()
     {
+        memset((void*)cast, 0, sizeof(cast));
         init();
     }
 
-    bool isValid(const u8* dice);
-    u8 isPair();
-    u8 isTwoPairs();
-    u8 isThreeSame();
-    u8 isFourSame();
-    u8 isSmallStraight();
-    u8 isBigStraight();
-    u8 isFullHouse();
-    u8 isYatzy();
+    const bool isValid(const u8* dice);
+    const u8 isPair();
+    const u8 isTwoPairs();
+    const u8 isThreeSame();
+    const u8 isFourSame();
+    const u8 isSmallStraight();
+    const u8 isBigStraight();
+    const u8 isFullHouse();
+    const u8 isYatzy();
 
-    u8 getNumOfSames(u8 target);
-    u8 getSumOfSames(u8 target);
-    u8 isPairOrSame(u8 threshold);
+    const u8 getNumOfSames(const u8 target);
+    const u8 getSumOfSames(const u8 target);
+    const u8 isPairOrSame(const u8 threshold);
     void storeThrow(const u8* dice); 
+    const u8* rollDie(const u8 numOfDice);
     u8 numOfNumbers[NUM_OF_NUMBERS];
 
 private: 
-    u8 getBiggest();
-
+    const u8 getBiggest();
+    u8 cast[NUM_OF_DICE];
     void init()
-    {
+    { 
         memset((void*)numOfNumbers, 0, sizeof(numOfNumbers));
     }
 };

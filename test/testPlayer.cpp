@@ -34,7 +34,8 @@ TEST_F(TestPlayer, giveManyCasts_totalPointsAreUpdated)
     EXPECT_EQ(10, player.getPoints()->fives);
     
     player.storeCast(cast3);
-    player.setPoints(ESmallStraight);
+    EXPECT_FALSE(player.setPoints(ETwoPairs));
+    EXPECT_TRUE(player.setPoints(ESmallStraight));
     EXPECT_EQ(37, player.getPoints()->total);
     
     player.storeCast(cast4);

@@ -41,7 +41,7 @@ public:
         memset(&pointsTable, 0, sizeof(SPoints));
     }
     const SPoints* getPoints();
-    void setPoints(const EPointsCategory category);
+    const bool setPoints(const EPointsCategory category);
 
 private:
     const u8 getSumOfNumbers();
