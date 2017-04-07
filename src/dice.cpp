@@ -1,6 +1,7 @@
 #include "dice.hpp"
 #include <random>
 
+
 const u8 Dice::getNumOfSames(const u8 target)
 {
     if(target > 0)
@@ -139,15 +140,13 @@ const u8 Dice::getSumOfSames(u8 target)
     return (target * getNumOfSames(target)); 
 }
 
-const u8* Dice::rollDie(const u8 numOfDice)
+void Dice::rollDie(const u8 numOfDice, u8* dice)
 {
     for(u8 i = 0; i < numOfDice; i++)
     {
         std::default_random_engine generator;
-        std::uniform_int_distribution<int> distribution(1,6);
-        cast[i] = distribution(generator); 
+        std::uniform_int_distribution<u8> distribution(1,6);
+        dice[i] = distribution(generator); 
     }
-
-    return cast;
 }
 

@@ -17,7 +17,6 @@ class Dice
 public:
     Dice()
     {
-        memset((void*)cast, 0, sizeof(cast));
         init();
     }
 
@@ -35,12 +34,12 @@ public:
     const u8 getSumOfSames(const u8 target);
     const u8 isPairOrSame(const u8 threshold);
     void storeThrow(const u8* dice); 
-    const u8* rollDie(const u8 numOfDice);
+    void rollDie(const u8 numOfDice, u8* dice);
     u8 numOfNumbers[NUM_OF_NUMBERS];
 
 private: 
     const u8 getBiggest();
-    u8 cast[NUM_OF_DICE];
+    
     void init()
     { 
         memset((void*)numOfNumbers, 0, sizeof(numOfNumbers));

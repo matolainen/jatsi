@@ -130,11 +130,13 @@ TEST_F(TestDice, giveBigStraight_returnTrue)
     EXPECT_EQ(20, dice.isBigStraight());
 }
 
-TEST_F(TestDice, rollDie_getValidCast)
+TEST_F(TestDice, rollFiveDice_getValidCast)
 {
-    EXPECT_TRUE(dice.isValid(dice.rollDie(5)));
+    u8 numOfDice = 5;
+    u8 cast[5];
+    dice.rollDie(numOfDice, cast);
+    EXPECT_TRUE(dice.isValid(cast));
 }
-
 
 
 

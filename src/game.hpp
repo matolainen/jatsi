@@ -1,7 +1,7 @@
 #include "player.hpp"
 #include <string>
 
-#define MAX_ROUNDS 15 
+#define NUM_OF_ROUNDS 15 
 
 
 class Game
@@ -14,5 +14,14 @@ public:
 
     void init()
     {
+        numOfPlayers = 0;
     }
-    const bool setNumOfPlay
+
+    const bool setNumOfPlayers(const u8 newNumOfPlayers)
+    {
+        numOfPlayers = newNumOfPlayers;
+    }
+
+
+private:
+    u8 numOfPlayers;
